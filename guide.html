@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Miller 지수란? — 면과 방향</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="docbody">
+  <header>
+    <h1>Miller 지수 쉽게 이해하기
+      <span class="nav"><a href="index.html">시각화</a><a href="guide.html">Miller 지수란?</a></span>
+    </h1>
+    <p class="sub">결정 안의 <b>면 (h k l)</b>과 <b>방향 [u v w]</b>을 숫자로 나타내는 법.</p>
+  </header>
+  <div class="doc">
+    <div class="card"><b>30초 요약</b>
+      <ul>
+        <li><b>(h k l)</b> = <b>면</b>. 면이 세 축과 만나는 지점(절편)의 <b>역수</b>.</li>
+        <li><b>[u v w]</b> = <b>방향</b>. 원점에서의 화살표 성분(정수비).</li>
+        <li>둥근 괄호 <b>( )</b> = 면, 대괄호 <b>[ ]</b> = 방향. 음수는 위에 바(1̄) 또는 -1.</li>
+        <li>입방정에선 <b>[hkl] ⟂ (hkl)</b>(방향이 같은 지수의 면에 수직) — 육방정은 아님.</li>
+      </ul>
+    </div>
+
+    <h2>1. 면 지수 (h k l) 구하는 법</h2>
+    <ol>
+      <li>면이 세 축(a₁,a₂,a₃)과 만나는 <b>절편</b>을 격자상수 단위로 읽는다. 예: (½, 1, ∞).</li>
+      <li>각 절편의 <b>역수</b>를 취한다. 예: (2, 1, 0).</li>
+      <li>가장 작은 정수비로 정리 → <b>(2 1 0)</b>. 축과 평행하면 절편 ∞ → 역수 0.</li>
+    </ol>
+    <div class="analogy">🧩 <b>비유</b>: (100)은 "a축을 1에서 자르고 나머지 축엔 평행한 면" = 상자의 한 옆면. (111)은 세 축을 모두 1에서 잘라 <b>모서리 삼각형</b>을 만드는 면.</div>
+    <p>시각화에서 파란 점이 바로 이 <b>절편(1/h, 1/k, 1/l)</b>이고, 파란 면이 그 세 점을 지나 셀을 자른 모습입니다.</p>
+
+    <h2>2. 대표 면</h2>
+    <table>
+      <thead><tr><th>면</th><th>절편</th><th>모양</th></tr></thead>
+      <tbody>
+        <tr><td>(100)</td><td>1, ∞, ∞</td><td>옆면(축에 수직)</td></tr>
+        <tr><td>(110)</td><td>1, 1, ∞</td><td>대각으로 선 면</td></tr>
+        <tr><td>(111)</td><td>1, 1, 1</td><td>모서리 삼각형(밀집면)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>3. 방향 지수 [u v w]</h2>
+    <p>원점에서 목표점까지의 벡터를 격자상수 단위로 읽고 정수비로 정리합니다. 예: a₁ 방향 = <span class="kv">[100]</span>, 면대각 = <span class="kv">[110]</span>, 공간대각 = <span class="kv">[111]</span>. 음수 성분은 <span class="kv">[1-10]</span>처럼 입력.</p>
+
+    <h2>4. 구조별 밀집면 (참고)</h2>
+    <ul>
+      <li><b>FCC</b>: 밀집면 <b>(111)</b>, 밀집방향 [110].</li>
+      <li><b>BCC</b>: 밀집면 (110) 계열, 밀집방향 <b>[111]</b>.</li>
+      <li><b>HCP</b>: 기저면 <b>(0001)</b> = 3지수 (001), 밀집방향 [100] 계열.</li>
+    </ul>
+    <p class="sub">※ HCP는 흔히 4지수 (h k i l)을 쓰지만(i=−(h+k)), 이 도구는 3지수 (h k l)을 육방 격자에서 역격자로 계산합니다.</p>
+
+    <h2>5. 이렇게 써보세요</h2>
+    <ol>
+      <li>구조(FCC 등)와 (hkl)을 고르고 <b>3D</b>에서 파란 면·절편을 확인.</li>
+      <li><b>2D 탭</b>에서 그 면을 정면으로 본 <b>원자 배열</b> 확인(밀집면일수록 촘촘).</li>
+      <li>[uvw]를 바꿔 초록 화살표 방향을 보고, (111) 면 위에 [1-10]이 놓이는지 등 확인.</li>
+    </ol>
+    <a class="back" href="index.html">← 시각화로</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>결정 구조 · Miller 지수 시각화 (FCC/BCC/HCP/SC)</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="importmap">
+{ "imports": {
+  "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+</script>
+</head>
+<body>
+  <header>
+    <h1>결정 구조 &amp; Miller 지수 시각화
+      <span class="nav"><a href="index.html">시각화</a><a href="guide.html">Miller 지수란?</a></span>
+    </h1>
+    <p class="sub">FCC · BCC · HCP · Simple Cubic 단위세포에서 <b>면 (h k l)</b>과 <b>방향 [u v w]</b>를 3D로, 그 면을 정면으로 본 원자 배열을 2D로.</p>
+  </header>
+  <main>
+    <aside id="controls">
+      <section>
+        <h2>결정 구조</h2>
+        <label>구조
+          <select id="struct">
+            <option>FCC</option><option>BCC</option><option>HCP</option><option>SC</option>
+          </select></label>
+        <label>격자상수 a (Å)<input id="a" type="number" step="0.01" /></label>
+        <label id="c-wrap">격자상수 c (Å, HCP)<input id="c" type="number" step="0.01" /></label>
+      </section>
+      <section>
+        <h2>면 (h k l)</h2>
+        <label><input id="hkl" type="text" value="1 1 1" /></label>
+        <label>자주 쓰는 면
+          <select id="planePreset">
+            <option value="">— 선택 —</option>
+            <option value="1 0 0">(100)</option><option value="1 1 0">(110)</option>
+            <option value="1 1 1">(111)</option><option value="2 1 0">(210)</option>
+            <option value="0 0 1">(001)</option>
+          </select></label>
+      </section>
+      <section>
+        <h2>방향 [u v w]</h2>
+        <label><input id="uvw" type="text" value="1 0 0" /></label>
+        <label>자주 쓰는 방향
+          <select id="dirPreset">
+            <option value="">— 선택 —</option>
+            <option value="1 0 0">[100]</option><option value="1 1 0">[110]</option>
+            <option value="1 1 1">[111]</option><option value="1 -1 0">[1-10]</option>
+          </select></label>
+      </section>
+      <section>
+        <h2>표시</h2>
+        <label class="chk"><input id="tg-atoms" type="checkbox" checked /> 원자</label>
+        <label class="chk"><input id="tg-plane" type="checkbox" checked /> (hkl) 면</label>
+        <label class="chk"><input id="tg-dir" type="checkbox" checked /> [uvw] 방향</label>
+      </section>
+      <section id="readout">
+        <h2>현재</h2>
+        <dl>
+          <dt>구조</dt><dd id="r-struct">–</dd>
+          <dt>면</dt><dd id="r-hkl">–</dd>
+          <dt>방향</dt><dd id="r-uvw">–</dd>
+        </dl>
+        <p class="hint" style="float:none">축 색: <span style="color:#e06666">a₁</span> · <span style="color:#6ee06e">a₂</span> · <span style="color:#6ea8fe">a₃</span> · 파란 면 = (hkl) · 초록 화살표 = [uvw]</p>
+      </section>
+    </aside>
+    <div id="stage">
+      <div class="tabs">
+        <button class="tab active" data-t="p3d">3D</button>
+        <button class="tab" data-t="p2d">2D (면 정면도)</button>
+      </div>
+      <div id="p3d" class="panel active"><div id="view3d" style="width:100%;height:100%"></div></div>
+      <div id="p2d" class="panel"><canvas id="cv2d" style="width:100%;height:100%"></canvas></div>
+      <div class="legend">
+        <span>🖱️ 3D: 드래그 회전 · 휠 확대</span>
+        <span>파란 점 = 면이 축과 만나는 절편(1/h, 1/k, 1/l)</span>
+      </div>
+    </div>
+  </main>
+  <style>
+    #stage{position:relative;padding:0} .tabs{display:flex;gap:4px;padding:8px 12px 0}
+    .tab{background:transparent;border:1px solid var(--line);border-bottom:none;color:var(--muted);
+      padding:7px 16px;border-radius:8px 8px 0 0;cursor:pointer}
+    .tab.active{background:var(--panel);color:var(--txt)}
+    .panel{position:absolute;inset:42px 12px 12px;display:none} .panel.active{display:block}
+    #p3d>div,#cv2d{border:1px solid var(--line);border-radius:8px}
+    .legend{position:absolute;bottom:16px;left:24px;display:flex;gap:18px;background:rgba(13,16,23,.8);
+      padding:6px 12px;border-radius:8px;border:1px solid var(--line);font-size:12px;color:var(--muted)}
+  </style>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
